@@ -3,7 +3,7 @@ import styles from './style.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Home() {
+export default function Other() {
     return (
         <main>
             <h1 className={styles.title}>Other page</h1>
