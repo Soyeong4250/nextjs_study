@@ -42,3 +42,8 @@ body {
 :any-link {
   @apply text-lg m-5 text-sky-600;
 }
+
+/* 이미지 표시를 위한 스타일 클래스 */
+img {
+  @apply border-solid border-2 border-green-300 m-5 p-2;
+}
