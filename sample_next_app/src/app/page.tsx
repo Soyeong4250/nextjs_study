@@ -1,28 +1,13 @@
-'use client';
+import Link from 'next/link';
 
-import { useState } from "react";
-
-export default function Home() {
-  var [input, setInput] = useState("");
-  var [message, setMessage] = useState("your name:");
-
-  const doChange = (e) => {
-    setInput(e.target.value);
-  }
-
-  const doClick = () => {
-    setMessage("Hello, " + input + "!!");
-    setInput("");
-  }
-
-  return (
-    <main>
-      <h1 className="title">Next.js sample.</h1>
-      <p className="msg">{message}</p>
-      <div className="m-5">
-        <input type="text" onChange={doChange} value={input} className="input" />
-        <button onClick={doClick} className="btn"> Click </button>
-      </div>
-    </main>
-  );
-}  
+export default function Other() {
+    return (
+        <main>
+            <h1 className="title">Top page</h1>
+            <p className="msg">This is other page smaple.</p>
+            <div>
+                <Link href="/ohter">go other page</Link>
+            </div>
+        </main>
+    )
+}
