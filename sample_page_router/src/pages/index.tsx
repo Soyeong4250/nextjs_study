@@ -1,22 +1,22 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import Link from "next/link";
+import { GetStaticProps } from 'next';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export const getStaticProps = ((context) => {
+  const data = {
+    title: "Index page",
+    msg: "시작페이지입니다."
+  }
+  return {props: {data}}
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
-export default function Home() {
+const inter = Inter({subsets: ['latin']});
+
+export default function Home({data}: {data:{msg:string}}) {
   return (
     <main>
-      {/* <h1>SSG application.</h1> */}
-      <p>This is sample page.</p>
+      <p>{data.msg}</p>
       <div><Link href="/other">Go "Other".</Link></div>
     </main>
   );
