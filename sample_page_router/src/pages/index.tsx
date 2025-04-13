@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <main>
-      <h1>SSG application.</h1>
+      {/* <h1>SSG application.</h1> */}
       <p>This is sample page.</p>
       <div><Link href="/other">Go "Other".</Link></div>
     </main>
