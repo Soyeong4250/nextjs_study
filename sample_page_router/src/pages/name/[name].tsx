@@ -8,30 +8,18 @@ export default function Name({data}: {data: {title: string, msg: string}}) {
     const router = useRouter();
     return (
         <main>
-            <h1 className="header">{data.title}</h1>
+            <h1 className="header">{data?.title}</h1>
             <p>name: {router.query.name}</p>
-            <p>message: {data.msg}</p>
+            <p>message: {data?.msg}</p>
             <div><Link href="/">Go Back!!</Link></div>
         </main>
     );
 }
 
-export function getStaticPaths() {
-    const path = [
-        '/name/kim',
-        '/name/lee',
-        '/name/park'
-    ];
-    return {
-        paths: path,
-        fallback: false
-    };
-}
-
-export function getStaticProps({params} : {params: {name: string}}) {
+export function getServerSideProps({params} : {params: {name: string}}) {
     const data = {
         kim: {
-            title: 'KIM-web',
+            title: 'Kim-web',
             msg: "This is Kim's web site."
         },
         lee: {
@@ -44,9 +32,17 @@ export function getStaticProps({params} : {params: {name: string}}) {
         }
     };
 
-    return {
-        props: {
-            data: data[params?.name as keyof typeof data] || null
-        }
+    if (data[params.name as keyof typeof data]) {
+        return {
+            props: {
+                data: data[params.name as keyof typeof data]
+            }
+        };
+    } else {
+        return {
+            props: {
+                data: {title: "No data", msg:"데이터가 없습니다."}
+            }
+        };
     }
 }
